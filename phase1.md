@@ -129,109 +129,139 @@
 - Testing procedures
 - Deployment guide
 
-## Project Structure
-1. `contracts/`: contains the smart contracts
-    - `ethereum/`: Ethereum-specific contracts
-        - `core/`: Main contract implementing the core swap functionality
-            - `BasicSwap.sol`: implements the basic swap functionality
+## Enhanced Project Structure
 
-            // ... future implementation
-            - `BasicSwapPair.sol`: implements basic swap logic and liquidity management
-            - `BasicSwapFactory.sol`: Manages individual trading pairs
-            - `BasicSwapRouter.sol`: Handles routing of trades and user interactions
-            - `BasicSwapRouterFactory.sol`: Creates and manages trading pairs
-        - `interfaces/`: Ethereum contract interfaces
-            - `IBasicSwap.sol`
+### 1. Contracts Directory (`contracts/`)
 
-            // ... future implementation
-            - `IBasicSwapFactory.sol`
-            - `IBasicSwapRouter.sol`
-            - `IBasicSwapRouterFactory.sol`
-        - `utils/`: Ethereum-specific utilities
-            - `Math.sol`
-            - `SafeMath.sol`
-            - `TransferHelper.sol`
-    - `common/`: Shared contract utilities and interfaces
-        - `interfaces/`: Common interfaces for cross-chain compatibility
-            - `ISwap.sol`: Generic swap interface
+#### Ethereum Directory
+- Core contracts in `ethereum/core/`
+  - BasicSwap.sol - Main swap functionality
+  - BasicSwapPair.sol - Swap logic and liquidity management
+  - BasicSwapFactory.sol - Trading pairs management
+  - BasicSwapRouter.sol - Trade routing and user interactions
+  - BasicSwapRouterFactory.sol - Trading pairs creation and management
 
-            // ... future implementation
-            - `IFactory.sol`: Generic factory interface
-            - `IRouter.sol`: Generic router interface
-        - `utils/`: Common utilities shared across chains
-            - `CommonMath.sol`
-            - `SecurityUtils.sol`
+- Interfaces in `ethereum/interfaces/`
+  - IBasicSwap.sol
+  - IBasicSwapFactory.sol
+  - IBasicSwapRouter.sol
+  - IBasicSwapRouterFactory.sol
 
-    // ... future blockchain implementations
-    - `solana/`: Reserved for Solana contracts
-    - `polygon/`: Reserved for Polygon contracts
-    - `avalanche/`: Reserved for Avalanche contracts
-    - `tezos/`: Reserved for Tezos contracts
+- Utilities in `ethereum/utils/`
+  - Math.sol
+  - SafeMath.sol
+  - TransferHelper.sol
 
-2. `frontend/`: contains the frontend code (React, TypeScript, Next.js)
-    - `components/`: React components organized by features
-        - `common/`: Shared components
-        - `swap/`: Swap-related components
-        - `wallet/`: Wallet-related components
-        - `chains/`: Chain-specific components
-    - `config/`
-        - `chains/`: Chain-specific configurations
-            - `ethereum.ts`
-            - `solana.ts`
-            - `polygon.ts`
-            - `avalanche.ts`
-            - `tezos.ts`
-        - `constants.ts`
-    - `services/`
-        - `blockchain/`: Blockchain interaction services
-            - `ethereum/`
-            - `solana/`
-            - `polygon/`
-            - `avalanche/`
-            - `tezos/`
-        - `api/`: General API services
-    - `store/`: Redux store configuration
-        - `slices/`
-            - `chains/`: Chain-specific state management
-    - `styles/`
-    - `types/`
-        - `chains/`: Chain-specific types
-        - `common/`: Shared types
-    - `utils/`
-        - `chains/`: Chain-specific utilities
-        - `common/`: Shared utilities
+#### Tezos Directory
+- Core contracts in `tezos/core/`
+  - basic_swap.mligo
+  - basic_swap_pair.mligo
+  - basic_swap_factory.mligo
+- Interfaces in `tezos/interfaces/`
+- Utilities in `tezos/utils/`
 
-3. `test/`: (frameworks: Mocha/Chai with Waffle)
-    - `ethereum/`
-        - `unit/`
-        - `integration/`
-    - `solana/`: Reserved for Solana tests
-    - `polygon/`: Reserved for Polygon tests
-    - `avalanche/`: Reserved for Avalanche tests
-    - `tezos/`: Reserved for Tezos tests
-    - `e2e/`: End-to-end tests for the frontend
-        - `ethereum/`
-        - `solana/`
-        - `polygon/`
-        - `avalanche/`
-        - `tezos/`
+#### Polkadot Directory
+- Core contracts in `polkadot/core/`
+  - basic_swap.rs
+  - lib.rs
+- Interfaces in `polkadot/interfaces/`
+- Utilities in `polkadot/utils/`
 
-4. `tasks/`: Deployment and maintenance tasks
-    - `ethereum/`: Ethereum-specific tasks
-    - `solana/`: Solana-specific tasks
-    - `polygon/`: Polygon-specific tasks
-    - `avalanche/`: Avalanche-specific tasks
-    - `tezos/`: Tezos-specific tasks
-    - `common/`: Shared tasks
+#### Common Directory
+- Interfaces in `common/interfaces/`
+  - ISwap.sol - Generic swap interface
+  - IFactory.sol - Generic factory interface
+  - IRouter.sol - Generic router interface
+- Utilities in `common/utils/`
+  - CommonMath.sol
+  - SecurityUtils.sol
 
-5. `docs/`: Documentation (GitBook)
-    - `general/`: General documentation
-    - `chains/`: Chain-specific documentation
-        - `ethereum/`
-        - `solana/`
-        - `polygon/`
-        - `avalanche/`
-        - `tezos/`
-    - `api/`: API documentation
-    - `deployment/`: Deployment guides per chain
+### 2. Frontend Directory (`frontend/`)
+
+#### Source Directory (`src/`)
+- Components
+  - Common components in `components/common/`
+  - Swap components in `components/swap/`
+  - Wallet components in `components/wallet/`
+  - Chain-specific components in `components/chains/`
+    - Ethereum components
+    - Tezos components
+    - Polkadot components
+
+- Hooks
+  - useEthereum.ts
+  - useTezos.ts
+  - usePolkadot.ts
+
+- Services
+  - Blockchain services in `services/blockchain/`
+    - Ethereum services (swap.service.ts, wallet.service.ts)
+    - Tezos services
+    - Polkadot services
+  - API services in `services/api/`
+
+- Store
+  - Chain-specific state management in `store/slices/chains/`
+
+- Configuration
+  - Chain configurations in `config/chains/`
+    - ethereum.ts
+    - tezos.ts
+    - polkadot.ts
+
+- Utilities
+  - Chain-specific utilities in `utils/chains/`
+
+### 3. Backend Directory (`backend/`)
+
+#### Source Directory (`src/`)
+- Modules
+  - Ethereum module
+    - Services
+    - Controllers
+    - Repositories
+  - Tezos module
+  - Polkadot module
+
+- Common
+  - Interfaces
+  - Utilities
+
+- Configuration
+
+### 4. Test Directory (`test/`)
+
+#### Contract Tests
+- Ethereum tests
+  - Unit tests
+  - Integration tests
+- Tezos tests
+- Polkadot tests
+
+#### Frontend Tests
+- End-to-end tests
+
+#### Backend Tests
+- Unit tests
+- Integration tests
+
+### 5. Scripts Directory (`scripts/`)
+
+#### Deployment Scripts
+- Ethereum deployment scripts
+- Tezos deployment scripts
+- Polkadot deployment scripts
+
+#### Utility Scripts
+
+### 6. Documentation Directory (`docs/`)
+
+#### Chain-specific Documentation
+- Ethereum documentation
+- Tezos documentation
+- Polkadot documentation
+
+#### API Documentation
+#### Deployment Guides
+#### Architecture Documentation
 
