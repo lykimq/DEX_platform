@@ -134,6 +134,7 @@
     - `ethereum/`: Ethereum-specific contracts
         - `core/`: Main contract implementing the core swap functionality
             - `BasicSwap.sol`: implements the basic swap functionality
+
             // ... future implementation
             - `BasicSwapPair.sol`: implements basic swap logic and liquidity management
             - `BasicSwapFactory.sol`: Manages individual trading pairs
@@ -141,6 +142,7 @@
             - `BasicSwapRouterFactory.sol`: Creates and manages trading pairs
         - `interfaces/`: Ethereum contract interfaces
             - `IBasicSwap.sol`
+
             // ... future implementation
             - `IBasicSwapFactory.sol`
             - `IBasicSwapRouter.sol`
@@ -152,12 +154,14 @@
     - `common/`: Shared contract utilities and interfaces
         - `interfaces/`: Common interfaces for cross-chain compatibility
             - `ISwap.sol`: Generic swap interface
+
             // ... future implementation
             - `IFactory.sol`: Generic factory interface
             - `IRouter.sol`: Generic router interface
         - `utils/`: Common utilities shared across chains
             - `CommonMath.sol`
             - `SecurityUtils.sol`
+
     // ... future blockchain implementations
     - `solana/`: Reserved for Solana contracts
     - `polygon/`: Reserved for Polygon contracts
